@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>BORNO'S BIRTHDAY</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="container">
+		<div id="coming" class="countdown-area">
+			<h2>BORNO'S BIRTHDAY coming...</h2>
+
+			<div class="single-countdown">
+				<div id="days" class="count-number">22</div>
+				<div class="count-name">Days</div>
+			</div>
+
+			<div class="single-countdown">
+				<div id="hours" class="count-number">04</div>
+				<div class="count-name">Hours</div>
+			</div>
+
+			<div class="single-countdown">
+				<div id="minutes" class="count-number">33</div>
+				<div class="count-name">Minutes</div>
+			</div>
+
+			<div class="single-countdown">
+				<div id="seconds" class="count-number">57</div>
+				<div class="count-name">Seconds</div>
+			</div>
+
+		</div>
+		<h2 id="over">BORNO'S BIRTHDAY coming...</h2>
+	</div>
+
+	<script type="text/javascript">
+		
+		function countdown(){
+			var now			= new Date();
+			var eventDate	= new Date(2021, 6, 1);
+
+			var todayTime	= now.getTime();
+			var eventTime	= eventDate.getTime();
+
+			var reTime		= eventTime - todayTime;
+
+			if(reTime <= 0) {
+				document.getElementById('coming').style.display = 'none';
+				document.getElementById('over').style.display = 'block';
+			}
+
+			var s = Math.floor(reTime / 1000);
+			var m = Math.floor(s / 60);
+			var h = Math.floor(m / 60);
+			var d = Math.floor(h / 24);
+
+			h %= 24;
+			m %= 60;
+			s %= 60;
+
+			h = (h < 10) ? "0" + h : h;
+			m = (m < 10) ? "0" + m : m;
+			s = (s < 10) ? "0" + s : s;
+
+			document.getElementById('days').textContent = d;
+			document.getElementById('days').innerText = d;
+
+			document.getElementById('hours').textContent = h;
+			document.getElementById('minutes').textContent = m;
+			document.getElementById('seconds').textContent = s;
+
+			setTimeout(countdown, 1000)
+
+		}
+		countdown();
+
+
+	</script>
+
+
+</body>
+</html>
